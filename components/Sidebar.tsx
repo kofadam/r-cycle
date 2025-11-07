@@ -22,7 +22,7 @@ export default function Sidebar() {
             ⚙️
           </div>
           <div>
-            <h1 className="text-xl font-bold text-gray-900">HardwareHub</h1>
+            <h1 className="text-xl font-bold text-gray-900">R-Cycle</h1>
             <p className="text-sm text-gray-500">Internal Marketplace</p>
           </div>
         </div>

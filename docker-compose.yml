@@ -3,11 +3,11 @@ version: '3.8'
 services:
   postgres:
     image: postgres:15-alpine
-    container_name: hardware-marketplace-db
+    container_name: r-cycle-db
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: hardware_marketplace
+      POSTGRES_DB: r_cycle
     ports:
       - "5432:5432"
     volumes:

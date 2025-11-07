@@ -8,7 +8,7 @@
 const { Pool } = require('pg');
 
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL || 'postgresql://postgres:postgres@localhost:5432/hardware_marketplace',
+  connectionString: process.env.DATABASE_URL || 'postgresql://postgres:postgres@localhost:5432/r_cycle',
 });
 
 const schema = `

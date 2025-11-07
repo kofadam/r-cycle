@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'HardwareHub - Internal Marketplace',
+  title: 'R-Cycle - Internal Marketplace',
   description: 'Internal hardware marketplace for decommissioned equipment',
 }
 

@@ -1,10 +1,45 @@
-# HardwareHub - Internal Hardware Marketplace
+# R-Cycle - Internal Hardware Marketplace
+
+[![License](https://img.shields.io/badge/license-Internal-blue.svg)]()
+[![Node](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen.svg)]()
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-blue.svg)]()
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue.svg)]()
+
+> A proof-of-concept internal marketplace for decommissioned hardware, built to demonstrate value to organizational decision makers before full integration.
+
+[Quick Start](#quick-start) • [Documentation](#documentation) • [Features](#key-features) • [Contributing](CONTRIBUTING.md)
+
+---
 
 A proof-of-concept internal marketplace for decommissioned hardware, built to demonstrate value to organizational decision makers before full integration.
 
+## Quick Start
+
+```bash
+# Clone the repository
+git clone <your-repo-url>
+cd r-cycle
+
+# Install dependencies
+npm install
+
+# Start PostgreSQL
+docker-compose up -d
+
+# Setup database with sample data
+npm run db:setup
+
+# Start development server
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) to see the application.
+
+📖 **Detailed setup:** See [QUICKSTART.md](QUICKSTART.md)
+
 ## Overview
 
-HardwareHub allows departments to list decommissioned hardware for internal reuse before destruction, reducing waste and saving budget. The POC focuses on core functionality while preparing for future integrations with Keycloak OIDC, PostgreSQL, and Kubernetes deployment.
+R-Cycle allows departments to list decommissioned hardware for internal reuse before destruction, reducing waste and saving budget. The POC focuses on core functionality while preparing for future integrations with Keycloak OIDC, PostgreSQL, and Kubernetes deployment.
 
 ## Tech Stack
 
@@ -37,6 +72,17 @@ HardwareHub allows departments to list decommissioned hardware for internal reus
 - All assets bundled locally
 - No external CDN dependencies
 - Self-contained deployment
+
+## Documentation
+
+| Document | Purpose |
+|----------|---------|
+| [QUICKSTART.md](QUICKSTART.md) | 5-minute setup guide |
+| [OVERVIEW.md](OVERVIEW.md) | Executive summary for management |
+| [PRESENTATION_GUIDE.md](PRESENTATION_GUIDE.md) | How to demo to stakeholders |
+| [DEPLOYMENT.md](DEPLOYMENT.md) | Production deployment guide |
+| [CONTRIBUTING.md](CONTRIBUTING.md) | Development workflow and guidelines |
+| [DELIVERY_CHECKLIST.md](DELIVERY_CHECKLIST.md) | Requirements vs delivered features |
 
 ## Quick Start
 

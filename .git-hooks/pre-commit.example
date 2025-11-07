@@ -1,0 +1,30 @@
+#!/bin/sh
+# Pre-commit hook for R-Cycle
+# Copy this to .git/hooks/pre-commit and make it executable
+
+echo "Running pre-commit checks..."
+
+# Check for TypeScript errors
+echo "Checking TypeScript..."
+npx tsc --noEmit
+if [ $? -ne 0 ]; then
+  echo "❌ TypeScript errors found. Please fix before committing."
+  exit 1
+fi
+
+# Check for console.log statements (except in specific files)
+echo "Checking for console.log statements..."
+if git diff --cached --name-only | grep -E '\.(ts|tsx|js|jsx)$' | xargs grep -n "console\.log" | grep -v "scripts/"; then
+  echo "❌ Found console.log statements. Please remove or replace with proper logging."
+  echo "   (Ignore this if intentional by using git commit --no-verify)"
+  exit 1
+fi
+
+# Check if .env is being committed
+if git diff --cached --name-only | grep -q "^\.env$"; then
+  echo "❌ .env file should not be committed. Use .env.example instead."
+  exit 1
+fi
+
+echo "✅ Pre-commit checks passed!"
+exit 0

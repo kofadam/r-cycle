@@ -1,0 +1,34 @@
+#!/bin/sh
+# Commit message hook for R-Cycle
+# Copy this to .git/hooks/commit-msg and make it executable
+
+commit_msg_file=$1
+commit_msg=$(cat "$commit_msg_file")
+
+# Check if commit message follows conventional commits format
+if ! echo "$commit_msg" | grep -qE "^(feat|fix|docs|style|refactor|test|chore)(\(.+\))?: .{1,}$"; then
+  echo "❌ Invalid commit message format!"
+  echo ""
+  echo "Commit message should follow conventional commits:"
+  echo "  <type>(<scope>): <subject>"
+  echo ""
+  echo "Examples:"
+  echo "  feat(api): add hardware bulk upload endpoint"
+  echo "  fix(ui): resolve listing card overflow issue"
+  echo "  docs: update deployment guide for K8s"
+  echo ""
+  echo "Types: feat, fix, docs, style, refactor, test, chore"
+  echo ""
+  echo "Use 'git commit --no-verify' to bypass this check if needed."
+  exit 1
+fi
+
+# Check subject line length (should be <= 72 characters)
+subject_line=$(echo "$commit_msg" | head -n 1)
+if [ ${#subject_line} -gt 72 ]; then
+  echo "⚠️  Warning: Commit message subject line is longer than 72 characters"
+  echo "   Consider making it more concise."
+  echo ""
+fi
+
+exit 0

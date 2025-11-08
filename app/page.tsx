@@ -63,19 +63,19 @@ export default function Dashboard() {
     <div className="flex min-h-screen">
       <Sidebar />
       
-      <main className="flex-1">
+      <main className="flex-1 ml-64">
         {/* Hero Section */}
-        <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+        <div className="bg-gradient-to-r from-primary-600 to-primary-700 text-white">
           <div className="max-w-7xl mx-auto px-8 py-16">
             <h1 className="text-4xl font-bold mb-4">
-              Internal Hardware Marketplace
+              R-Cycle Hardware Marketplace
             </h1>
-            <p className="text-xl text-blue-100 mb-8">
+            <p className="text-xl text-primary-100 mb-8">
               Discover decommissioned hardware available across departments. Reduce waste, save budget, find what you need.
             </p>
             <Link
               href="/post"
-              className="inline-flex items-center space-x-2 bg-white text-blue-600 px-6 py-3 rounded-lg font-medium hover:bg-blue-50 transition-colors"
+              className="inline-flex items-center space-x-2 bg-white text-primary-600 px-6 py-3 rounded-lg font-medium hover:bg-primary-50 transition-colors"
             >
               <span>➕</span>
               <span>Post Hardware</span>
@@ -93,7 +93,7 @@ export default function Dashboard() {
                   placeholder="Search by serial number, title, or department..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
                 />
                 <span className="absolute left-3 top-2.5 text-gray-400">🔍</span>
               </div>
@@ -107,7 +107,7 @@ export default function Dashboard() {
                   className={`
                     flex items-center space-x-2 px-4 py-2 rounded-lg font-medium transition-colors
                     ${selectedCategory === category.id
-                      ? 'bg-blue-600 text-white'
+                      ? 'bg-primary-600 text-white'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                     }
                   `}
@@ -126,8 +126,8 @@ export default function Dashboard() {
               <p className="text-4xl font-bold text-gray-900">{categoryStats.available}</p>
             </div>
             <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-              <p className="text-blue-600 text-sm mb-2">Matching Search</p>
-              <p className="text-4xl font-bold text-blue-600">{filteredListings.length}</p>
+              <p className="text-primary-600 text-sm mb-2">Matching Search</p>
+              <p className="text-4xl font-bold text-primary-600">{filteredListings.length}</p>
             </div>
             <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
               <p className="text-purple-600 text-sm mb-2">Servers</p>
@@ -142,7 +142,7 @@ export default function Dashboard() {
           {/* Listings */}
           {loading ? (
             <div className="text-center py-12">
-              <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+              <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
               <p className="mt-4 text-gray-600">Loading hardware...</p>
             </div>
           ) : filteredListings.length === 0 ? (
@@ -218,7 +218,7 @@ export default function Dashboard() {
                       </div>
                     </div>
 
-                    <button className="w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 rounded-lg transition-colors">
+                    <button className="w-full mt-4 bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 rounded-lg transition-colors">
                       Request This Hardware
                     </button>
                   </div>

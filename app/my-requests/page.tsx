@@ -47,7 +47,7 @@ export default function MyRequests() {
       case 'pending_security':
         return { 
           label: 'Pending Security Review',
-          color: 'bg-blue-100 text-blue-800',
+          color: 'bg-primary-100 text-primary-800',
           icon: '🔒'
         };
       case 'approved':
@@ -75,7 +75,7 @@ export default function MyRequests() {
     <div className="flex min-h-screen">
       <Sidebar />
       
-      <main className="flex-1 bg-gray-50">
+      <main className="flex-1 bg-gray-50 ml-64">
         <div className="max-w-7xl mx-auto px-8 py-8">
           {/* Header */}
           <div className="mb-8">
@@ -87,7 +87,7 @@ export default function MyRequests() {
           <div className="bg-white rounded-lg shadow-sm border border-gray-200">
             {loading ? (
               <div className="text-center py-12">
-                <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+                <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
                 <p className="mt-4 text-gray-600">Loading your requests...</p>
               </div>
             ) : claims.length === 0 ? (
@@ -99,7 +99,7 @@ export default function MyRequests() {
                 </p>
                 <a
                   href="/"
-                  className="inline-flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium"
+                  className="inline-flex items-center space-x-2 bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg font-medium"
                 >
                   <span>🏪</span>
                   <span>Browse Marketplace</span>

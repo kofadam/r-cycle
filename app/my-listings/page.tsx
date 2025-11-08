@@ -65,7 +65,7 @@ export default function MyListings() {
     <div className="flex min-h-screen">
       <Sidebar />
       
-      <main className="flex-1 bg-gray-50">
+      <main className="flex-1 bg-gray-50 ml-64">
         <div className="max-w-7xl mx-auto px-8 py-8">
           {/* Header */}
           <div className="mb-8">
@@ -82,7 +82,7 @@ export default function MyListings() {
                   className={`
                     py-4 px-1 border-b-2 font-medium text-sm transition-colors
                     ${activeTab === 'all'
-                      ? 'border-blue-500 text-blue-600'
+                      ? 'border-primary-500 text-primary-600'
                       : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
                     }
                   `}
@@ -94,7 +94,7 @@ export default function MyListings() {
                   className={`
                     py-4 px-1 border-b-2 font-medium text-sm transition-colors
                     ${activeTab === 'available'
-                      ? 'border-blue-500 text-blue-600'
+                      ? 'border-primary-500 text-primary-600'
                       : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
                     }
                   `}
@@ -106,7 +106,7 @@ export default function MyListings() {
                   className={`
                     py-4 px-1 border-b-2 font-medium text-sm transition-colors
                     ${activeTab === 'claimed'
-                      ? 'border-blue-500 text-blue-600'
+                      ? 'border-primary-500 text-primary-600'
                       : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
                     }
                   `}
@@ -120,7 +120,7 @@ export default function MyListings() {
             <div className="p-6">
               {loading ? (
                 <div className="text-center py-12">
-                  <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+                  <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
                   <p className="mt-4 text-gray-600">Loading your listings...</p>
                 </div>
               ) : filteredListings.length === 0 ? (
@@ -132,7 +132,7 @@ export default function MyListings() {
                   </p>
                   <Link
                     href="/post"
-                    className="inline-flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium"
+                    className="inline-flex items-center space-x-2 bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg font-medium"
                   >
                     <span>➕</span>
                     <span>Post Hardware</span>
@@ -145,7 +145,7 @@ export default function MyListings() {
                     return (
                       <div
                         key={listing.id}
-                        className="border border-gray-200 rounded-lg p-6 hover:border-blue-300 transition-colors"
+                        className="border border-gray-200 rounded-lg p-6 hover:border-primary-300 transition-colors"
                       >
                         <div className="flex items-start justify-between">
                           <div className="flex-1">

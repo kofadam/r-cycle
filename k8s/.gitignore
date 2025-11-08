@@ -1,0 +1,12 @@
+# NEVER commit actual secrets to git!
+02-secret.yaml
+*-secret.yaml
+*.secret.yaml
+
+# Backup files
+*.bak
+*.backup
+*.sql
+
+# Local configuration
+local-*.yaml

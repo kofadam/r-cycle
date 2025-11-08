@@ -1,0 +1,56 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: db-init
+  namespace: r-cycle
+  labels:
+    app: r-cycle
+    component: db-init
+spec:
+  # Keep job history for troubleshooting
+  ttlSecondsAfterFinished: 3600  # Clean up after 1 hour
+  backoffLimit: 3
+  template:
+    metadata:
+      labels:
+        app: r-cycle
+        component: db-init
+    spec:
+      restartPolicy: OnFailure
+      containers:
+      - name: db-init
+        image: kofadam/r-cycle:0.1.0
+        command:
+        - node
+        - /app/scripts/setup-db.js
+        env:
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: r-cycle-secrets
+              key: DATABASE_URL
+        - name: NODE_ENV
+          valueFrom:
+            configMapKeyRef:
+              name: r-cycle-config
+              key: NODE_ENV
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "200m"
+      # Wait for PostgreSQL to be ready before running
+      initContainers:
+      - name: wait-for-postgres
+        image: postgres:15-alpine
+        command:
+        - sh
+        - -c
+        - |
+          until pg_isready -h postgres -p 5432 -U postgres; do
+            echo "Waiting for PostgreSQL to be ready..."
+            sleep 2
+          done
+          echo "PostgreSQL is ready!"

@@ -1,4 +1,5 @@
 # R-Cycle - Internal Hardware Marketplace
+<img width="1024" height="1024" alt="image" src="https://github.com/user-attachments/assets/0cd0ac0a-147e-4762-9ac0-4f4ffc563152" />
 
 [![License](https://img.shields.io/badge/license-Internal-blue.svg)]()
 [![Node](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen.svg)]()

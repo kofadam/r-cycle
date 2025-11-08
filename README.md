@@ -18,7 +18,7 @@ A proof-of-concept internal marketplace for decommissioned hardware, built to de
 
 ```bash
 # Clone the repository
-git clone <your-repo-url>
+git clone https://github.com/kofadam/r-cycle.git
 cd r-cycle
 
 # Install dependencies

@@ -44,6 +44,29 @@ export async function fetchHardwareSpecs(serialNumber: string) {
       },
       hasStorageMedia: false
     },
+    'SRV003-HP-DL360': {
+      manufacturer: 'HP',
+      model: 'ProLiant DL360 Gen10',
+      category: 'Server',
+      specs: {
+        cpu: '2x Intel Xeon Gold 6130 (16-core, 2.1GHz)',
+        ram: '256GB DDR4 ECC',
+        storage: ['No drives installed'],
+        ports: '4x 1GbE, 2x 25GbE SFP28'
+      },
+      hasStorageMedia: false
+    },
+    'STR001-NETAPP-FAS': {
+      manufacturer: 'NetApp',
+      model: 'FAS2750',
+      category: 'Storage',
+      specs: {
+        storage: ['24x 1.2TB SAS HDD'],
+        ports: '4x 10GbE',
+        other: 'Dual controllers'
+      },
+      hasStorageMedia: true  // This will be blocked!
+    },
     'NET002-CISCO-ASR': {
       manufacturer: 'Cisco',
       model: 'ASR 1001-X',

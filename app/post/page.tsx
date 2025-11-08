@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Sidebar from '@/components/Sidebar';
+import { calculateImpact, type EnvironmentalImpact } from '@/lib/environmental-impact';
+import EnvironmentalImpactCard from '@/components/EnvironmentalImpactCard';
 
 export default function PostHardware() {
   const router = useRouter();
@@ -10,6 +12,8 @@ export default function PostHardware() {
   const [lookingUp, setLookingUp] = useState(false);
   const [error, setError] = useState('');
   const [storageWarning, setStorageWarning] = useState('');
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [environmentalImpact, setEnvironmentalImpact] = useState<EnvironmentalImpact | null>(null);
   
   const [formData, setFormData] = useState({
     serialNumber: '',
@@ -104,8 +108,16 @@ export default function PostHardware() {
         return;
       }
 
-      // Success - redirect to my listings
-      router.push('/my-listings');
+      // Success - calculate and show environmental impact!
+      const impact = calculateImpact(formData.category);
+      setEnvironmentalImpact(impact);
+      setShowSuccess(true);
+
+      // Redirect after showing impact (5 seconds)
+      setTimeout(() => {
+        router.push('/my-listings');
+      }, 5000);
+      
     } catch (error) {
       console.error('Error creating listing:', error);
       setError('Failed to create listing');
@@ -113,6 +125,42 @@ export default function PostHardware() {
       setLoading(false);
     }
   };
+
+  // If success, show impact celebration
+  if (showSuccess && environmentalImpact) {
+    return (
+      <div className="flex min-h-screen">
+        <Sidebar />
+        
+        <main className="flex-1 bg-gray-50 ml-64">
+          <div className="max-w-4xl mx-auto px-8 py-8">
+            <EnvironmentalImpactCard 
+              impact={environmentalImpact} 
+              category={formData.category} 
+            />
+            
+            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 text-center">
+              <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                ✅ Hardware Posted Successfully!
+              </h2>
+              <p className="text-gray-600 mb-4">
+                Your {formData.category.toLowerCase()} "{formData.title}" is now available for internal reuse.
+              </p>
+              <p className="text-sm text-gray-500">
+                Redirecting to your listings in 5 seconds...
+              </p>
+              <button
+                onClick={() => router.push('/my-listings')}
+                className="mt-4 btn-primary"
+              >
+                View My Listings
+              </button>
+            </div>
+          </div>
+        </main>
+      </div>
+    );
+  }
 
   return (
     <div className="flex min-h-screen">

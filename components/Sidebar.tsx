@@ -12,6 +12,7 @@ export default function Sidebar() {
     { name: 'Post Hardware', href: '/post', icon: '➕' },
     { name: 'My Listings', href: '/my-listings', icon: '📦' },
     { name: 'My Requests', href: '/my-requests', icon: '❤️' },
+    { name: 'Leaderboard', href: '/leaderboard', icon: '🌍', badge: 'New' },
   ];
 
   return (
@@ -40,23 +41,49 @@ export default function Sidebar() {
                 key={item.name}
                 href={item.href}
                 className={`
-                  flex items-center space-x-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors
+                  flex items-center justify-between px-3 py-2 rounded-lg text-sm font-medium transition-colors
                   ${isActive 
                     ? 'bg-primary-50 text-primary-600' 
                     : 'text-gray-700 hover:bg-gray-50'
                   }
                 `}
               >
-                <span className="text-lg">{item.icon}</span>
-                <span>{item.name}</span>
+                <div className="flex items-center space-x-3">
+                  <span className="text-lg">{item.icon}</span>
+                  <span>{item.name}</span>
+                </div>
+                {item.badge && (
+                  <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800">
+                    {item.badge}
+                  </span>
+                )}
               </Link>
             );
           })}
         </div>
       </nav>
 
-      {/* Quick Stats */}
+      {/* Environmental Impact Banner */}
       <div className="p-4">
+        <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg p-4 border border-green-200">
+          <div className="flex items-center space-x-2 mb-2">
+            <span className="text-2xl">🌍</span>
+            <div className="text-xs font-semibold text-gray-700">Your Impact</div>
+          </div>
+          <div className="text-sm text-gray-600">
+            Every hardware you post helps save CO2 and protect our planet!
+          </div>
+          <Link 
+            href="/leaderboard"
+            className="mt-3 block text-center text-xs font-medium text-primary-600 hover:text-primary-700"
+          >
+            View Leaderboard →
+          </Link>
+        </div>
+      </div>
+
+      {/* Quick Stats */}
+      <div className="p-4 border-t border-gray-200">
         <p className="px-3 text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">
           QUICK STATS
         </p>

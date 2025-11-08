@@ -1,22 +1,35 @@
 version: '3.8'
 
 services:
+  r-cycle:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      # Database connection - use your Neon DB for testing
+      DATABASE_URL: ${DATABASE_URL}
+      # Or use a local PostgreSQL for development
+      # DATABASE_URL: postgresql://postgres:postgres@postgres:5432/rcycle
+    depends_on:
+      - postgres
+    restart: unless-stopped
+
+  # Optional: Local PostgreSQL for development
   postgres:
     image: postgres:15-alpine
-    container_name: r-cycle-db
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: r_cycle
+      POSTGRES_DB: rcycle
     ports:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
+      # Automatically run schema on first start
+      - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    restart: unless-stopped
 
 volumes:
   postgres_data:

@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { APP_VERSION } from '@/lib/version';
 
 export default function Sidebar() {
   const pathname = usePathname();
@@ -14,7 +15,7 @@ export default function Sidebar() {
   ];
 
   return (
-    <div className="w-64 bg-white border-r border-gray-200 min-h-screen fixed left-0 top-0 bottom-0 overflow-y-auto">
+    <div className="w-64 bg-white border-r border-gray-200 min-h-screen fixed left-0 top-0 bottom-0 overflow-y-auto flex flex-col">
       {/* Logo/Header */}
       <div className="p-6 border-b border-gray-200">
         <div className="flex items-center space-x-3">
@@ -27,7 +28,7 @@ export default function Sidebar() {
       </div>
 
       {/* Navigation */}
-      <nav className="p-4">
+      <nav className="p-4 flex-1">
         <div className="space-y-1">
           <p className="px-3 text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">
             NAVIGATION
@@ -55,7 +56,7 @@ export default function Sidebar() {
       </nav>
 
       {/* Quick Stats */}
-      <div className="p-4 mt-4">
+      <div className="p-4">
         <p className="px-3 text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">
           QUICK STATS
         </p>
@@ -75,8 +76,16 @@ export default function Sidebar() {
         </div>
       </div>
 
+      {/* Version Info */}
+      <div className="p-4 border-t border-gray-200">
+        <div className="px-3 py-2 bg-gray-50 rounded-lg">
+          <p className="text-xs text-gray-500 mb-1">Version</p>
+          <p className="text-sm font-mono text-gray-700">{APP_VERSION}</p>
+        </div>
+      </div>
+
       {/* User Info (Mock) */}
-      <div className="absolute bottom-0 w-64 p-4 border-t border-gray-200">
+      <div className="p-4 border-t border-gray-200">
         <div className="flex items-center space-x-3">
           <div className="w-8 h-8 bg-primary-600 rounded-full flex items-center justify-center text-white text-sm font-medium">
             B

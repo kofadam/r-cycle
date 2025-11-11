@@ -1,10 +1,11 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import ProtectedRoute from '@/components/ProtectedRoute';
 import Sidebar from '@/components/Sidebar';
 import { calculateDepartmentImpact, getBadge, type DepartmentStats } from '@/lib/environmental-impact';
 
-export default function Leaderboard() {
+function LeaderboardContent() {
   const [stats, setStats] = useState<DepartmentStats[]>([]);
   const [loading, setLoading] = useState(true);
   const [timeframe, setTimeframe] = useState<'all' | 'month' | 'quarter'>('all');
@@ -191,5 +192,13 @@ export default function Leaderboard() {
         </div>
       </main>
     </div>
+  );
+}
+
+export default function Leaderboard() {
+  return (
+    <ProtectedRoute>
+      <LeaderboardContent />
+    </ProtectedRoute>
   );
 }

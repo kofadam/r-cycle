@@ -13,7 +13,14 @@ export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams;
     const listingId = searchParams.get('listingId');
-    const user = getCurrentUser();
+    const user = await getCurrentUser();
+
+if (!user) {
+  return NextResponse.json(
+    { error: 'Unauthorized' },
+    { status: 401 }
+  );
+}
 
     let sql = `
       SELECT 
@@ -52,7 +59,14 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const user = getCurrentUser();
+    const user = await getCurrentUser();
+
+if (!user) {
+  return NextResponse.json(
+    { error: 'Unauthorized' },
+    { status: 401 }
+  );
+}
 
     const { listingId, justification } = body;
 

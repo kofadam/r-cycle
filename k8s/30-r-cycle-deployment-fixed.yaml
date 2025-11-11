@@ -142,7 +142,8 @@ spec:
           # Wait a bit more for schema to be created by db-init job
           echo "Waiting for database schema initialization..."
           sleep 10
-            volumes:
+      # Mount internal CA certificate for SSL verification
+      volumes:
       - name: ca-cert
         configMap:
           name: internal-ca-cert

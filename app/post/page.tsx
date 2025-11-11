@@ -2,11 +2,12 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import ProtectedRoute from '@/components/ProtectedRoute';
 import Sidebar from '@/components/Sidebar';
 import { calculateImpact, type EnvironmentalImpact } from '@/lib/environmental-impact';
 import EnvironmentalImpactCard from '@/components/EnvironmentalImpactCard';
 
-export default function PostHardware() {
+function PostHardwareContent() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [lookingUp, setLookingUp] = useState(false);
@@ -412,5 +413,13 @@ export default function PostHardware() {
         </div>
       </main>
     </div>
+  );
+}
+
+export default function PostHardwarePage() {
+  return (
+    <ProtectedRoute>
+      <PostHardwareContent />
+    </ProtectedRoute>
   );
 }

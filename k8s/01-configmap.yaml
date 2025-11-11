@@ -17,5 +17,12 @@ data:
   POSTGRES_HOST: "postgres"
   POSTGRES_PORT: "5432"
 
+  # Keycloak Authentication (non-sensitive)
+  # Leave these commented out for dev mode, uncomment for production
+  # KEYCLOAK_CLIENT_ID: "r-cycle-app"
+  # KEYCLOAK_ISSUER: "https://keycloak.company.com/realms/r-cycle"
+  # NEXTAUTH_URL: "https://r-cycle.company.com"
+  # KEYCLOAK_ENABLED: "true"
+
   # Version information (will be overridden by image build args)
-  APP_VERSION: "0.1.0"
+  APP_VERSION: "0.3.0"

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import ProtectedRoute from '@/components/ProtectedRoute';
 import Sidebar from '@/components/Sidebar';
 import type { Listing } from '@/lib/types';
 
@@ -12,7 +13,7 @@ const categories = [
   { id: 'Storage', name: 'Storage', icon: '💾' },
 ];
 
-export default function Dashboard() {
+function MarketplaceContent() {
   const [listings, setListings] = useState<Listing[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -229,5 +230,13 @@ export default function Dashboard() {
         </div>
       </main>
     </div>
+  );
+}
+
+export default function Dashboard() {
+  return (
+    <ProtectedRoute>
+      <MarketplaceContent />
+    </ProtectedRoute>
   );
 }

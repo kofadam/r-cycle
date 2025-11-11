@@ -1,0 +1,13 @@
+# Add these to your package.json dependencies:
+
+"dependencies": {
+  "next-auth": "^4.24.5"
+}
+
+"devDependencies": {
+  "@types/next-auth": "^3.15.0"
+}
+
+# OR run these commands:
+npm install next-auth@^4.24.5
+npm install --save-dev @types/next-auth

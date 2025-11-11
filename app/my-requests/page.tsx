@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import ProtectedRoute from '@/components/ProtectedRoute';
 import Sidebar from '@/components/Sidebar';
 
 interface ClaimWithListing {
@@ -15,7 +16,7 @@ interface ClaimWithListing {
   requestedAt: string;
 }
 
-export default function MyRequests() {
+function MyRequestsContent() {
   const [claims, setClaims] = useState<ClaimWithListing[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -92,7 +93,7 @@ export default function MyRequests() {
               </div>
             ) : claims.length === 0 ? (
               <div className="text-center py-16">
-                <div className="text-6xl mb-4">❤️</div>
+                <div className="text-6xl mb-4">💚</div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">No requests yet</h3>
                 <p className="text-gray-600 mb-6">
                   Browse the marketplace and request hardware your team needs
@@ -101,7 +102,7 @@ export default function MyRequests() {
                   href="/"
                   className="inline-flex items-center space-x-2 bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg font-medium"
                 >
-                  <span>🏪</span>
+                  <span>🪙</span>
                   <span>Browse Marketplace</span>
                 </a>
               </div>
@@ -202,5 +203,13 @@ export default function MyRequests() {
         </div>
       </main>
     </div>
+  );
+}
+
+export default function MyRequests() {
+  return (
+    <ProtectedRoute>
+      <MyRequestsContent />
+    </ProtectedRoute>
   );
 }
